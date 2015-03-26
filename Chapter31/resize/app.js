@@ -1,19 +1,19 @@
-var AWS = require('aws-sdk')
+﻿var AWS = require('aws-sdk')
   , Sequelize = require('sequelize')
   , im = require('imagemagick')
   , mime = require('mime')
-  , s3 = new AWS.S3({ region: 'ap-northeast-1' })
-  , sqs = new AWS.SQS({ region: 'ap-northeast-1' });
+  , s3 = new AWS.S3({ region: 'ap-southeast-1a' })
+  , sqs = new AWS.SQS({ region: 'ap-southeast-1a' });
 
-var s3Bucket = 'examplephoto.image';
-var sqsQueueUrl = 'https://sqs.ap-northeast-1.amazonaws.com/232075047203/ExamplePhotoQueue';
+var s3Bucket = 'afts3';
+var sqsQueueUrl = 'https://sqs.ap-southeast-1.amazonaws.com/406515078098/aftqs';
 var rdsEndpoint = {
-  host: 'examplephoto.cnlconsezo7y.ap-northeast-1.rds.amazonaws.com',
+  host: 'aftdbinstance.cbxmpvesk9ke.ap-southeast-1.rds.amazonaws.com',
   port: 3306
 };
 
 // MySQL DB 이름, 계정, 암호
-var sequelize = new Sequelize('examplephoto', 'admin', 'adminpassword', {
+var sequelize = new Sequelize('AFTDB', 'aftadmin', 'aft', {
   host: rdsEndpoint.host,
   port: rdsEndpoint.port
 });
